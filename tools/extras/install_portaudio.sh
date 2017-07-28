@@ -84,7 +84,7 @@ fi
 ./configure --prefix=`pwd`/install --with-pic
 sed -i.bk '40s:src/common/pa_ringbuffer.o::g; 40s:$: src/common/pa_ringbuffer.o:' Makefile
 
-if [ "$MACOS" != "" ]; then
+#if [ "$MACOS" != "" ]; then
     echo "detected MacOS operating system ... trying to fix Makefile"
     mv Makefile Makefile.bck
     cat Makefile.bck | sed -e 's/\-isysroot\ \/Developer\/SDKs\/MacOSX10\.4u\.sdk//g' \
@@ -94,7 +94,7 @@ if [ "$MACOS" != "" ]; then
     cat include/pa_mac_core.h.bck \
       | sed 's/\/\/\#include \<AudioToolbox\/AudioToolbox.h\>/#include \<AudioToolbox\/AudioToolbox.h\>/g' \
       > include/pa_mac_core.h 
-fi
+#fi
 
 make
 make install
