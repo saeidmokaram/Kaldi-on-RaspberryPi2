@@ -2,9 +2,13 @@
 
 ## Installing required packages
 Not all the packeges might be relivent to this installation
+  
   sudo apt-get update
+  
   sudo apt-get install git sox htop python-dev python-numpy python-scipy python-matplotlib python-pip python-pyaudio python3-pyaudio automake gf$
+  
   sudo apt-get install bison mplayer c++11 libjack0 libjack-dev
+  
   sudo apt-get install  zlib1g-dev
 
 ## Getting Kaldi
