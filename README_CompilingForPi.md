@@ -28,7 +28,7 @@ Add this befor "all: check_required_programs sph2pipe atlas sclite openfst"
 
 Make the tools by:
 
-    make
+    make -j 1
 
 To install portaudio, modify install_portaudio.sh like:
 
@@ -40,30 +40,31 @@ Then install it by:
 
     ./install_portaudio.sh
 
-
 ## Making Kaldi:
 
     cd ../src
 
 In src do:
+
     ./configure
 
 Modify kaldi.mk by removing "-msse -msse2" in front of "CXXFLAGS = " and adding:
+
     -mfpu=neon -march=native -mcpu=native -mtune=native -mfloat-abi=hard -funsafe-math-optimizations
 
 Modify the onlinebin/MakeFile like:
+
     EXTRA_LDLIBS += -lasound -lrt -ljack
 
 Making depend:
+
     make depend -j 1
     make -j 1
 
 You may need to do "make ext" to have onlinbin as well:
+
     make ext_depend -j 1
     make ext -j 1
 
-
-
-
-# To activate swap on ubuntu mate after making swap partition do:
+### To activate swap on ubuntu mate after making swap partition do:
     sudo swapon /dev/mmcblk0p3
