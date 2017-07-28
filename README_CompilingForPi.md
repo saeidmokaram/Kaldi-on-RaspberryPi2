@@ -9,6 +9,7 @@ Not all the packeges might be relivent to this installation
     sudo apt-get install  zlib1g-dev
 
 ## Getting Kaldi
+
     git clone https://github.com/kaldi-asr/kaldi.git kaldi --origin upstream
 
 
@@ -18,24 +19,30 @@ Run your Pi2 in the "Shell Mode" and use just "one cpu" (-j 1) to compile becaus
     cd kaldi/tools/
 
 In Makefile, if required, uncomment the next line to build with OpenFst-1.4.1.
+
     OPENFST_VERSION = 1.4.1
 
 Add this befor "all: check_required_programs sph2pipe atlas sclite openfst"
+
     CXXFLAGS = -mfpu=neon -march=native -mcpu=native -mtune=native -mfloat-abi=hard -funsafe-math-optimizations
 
 Make the tools by:
+
     make
 
 To install portaudio, modify install_portaudio.sh like:
+
     #if [ "$MACOS" != "" ]; then
-        cp src/common/pa_ringbuffer.h install/include/
+      cp src/common/pa_ringbuffer.h install/include/
     #fi
 
 Then install it by:
+
     ./install_portaudio.sh
 
 
 ## Making Kaldi:
+
     cd ../src
 
 In src do:
