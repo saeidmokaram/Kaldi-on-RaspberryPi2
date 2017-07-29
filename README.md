@@ -1,5 +1,6 @@
 ![Kaldi Pi](https://raw.githubusercontent.com/saeidmokaram/Kaldi-on-RaspberryPi2/master/Kaldi_Pi.png)
-# Raspberry Pi2 Ubuntu MATE Kaldi compiling notes
+
+# Raspberry Pi2/3 Ubuntu MATE Kaldi compiling notes
 This is an instruction to compile the Kaldi ASR for a Raspberry Pi2/3 running [Ubuntu MATE for the Raspberry Pi 2/3](https://ubuntu-mate.org/raspberry-pi/).
 
 ## System requirements:
