@@ -1,12 +1,35 @@
 # Raspberry Pi2 Ubuntu MATE Kaldi compiling notes
+This is an instruction to compile the Kaldi ASR for a Raspberry Pi2/3 running [Ubuntu MATE for the Raspberry Pi 2/3](https://ubuntu-mate.org/raspberry-pi/).
+
+## System requirements:
+
+1. Raspberry Pi2/3
+2. 32GB microSD card (Recommended). Full installation requires about 18GB.
+3. Ubuntu MATE for the Raspberry Pi 2/3.
+4. Allocating swap space to the Ubuntu MATE.
+5. Booting Ubuntu MATE in the command mode.
+6. Overclocking your Pi (Recommended)
+
+## Preparing your Raspberry Pi2/3
+The first step is to install and run the [Ubuntu MATE](https://ubuntu-mate.org/raspberry-pi/) on your Raspberry Pi 2/3.
+
+The Kaldi installation requires a bit more memory than the 1GB of the Raspberry Pi 2/3. So an option for compiling Kaldi on the device is to allocate a swap space. The Ubuntu MATE 16.04.2 automatically resize the root partition on first boot to fully utilize the all available space on the microSD card. It doesn't allocate any swap space by default so we need to manually do that after the first boot of your MATE system. After making a swap space of about 2GB (by using 'Gparted' for instance), to activate swap on Ubuntu MATE do (you may need to modify the swap partition path):
+
+    sudo swapon /dev/mmcblk0p3
+
+To use less memory for you OS, you can set your system to boot in the command mode by modifying the system config in the 'Raspberry Pi Software Configuration Tool' -> 2. Boot Options:
+
+    sudo raspi-config
+
+Here you can also overclock your Pi (using a heat sink is recommended) in the '4. Overclock' option to:
+
+    High 1000MHz ARM, 500MHz core, 500MHz SDRAM, 2 overvolt
 
 ## Installing required packages
-Not all the packeges might be relivent to this installation
+Not all the packages might be relevant to this installation
   
     sudo apt-get update
-    sudo apt-get install git sox htop python-dev python-numpy python-scipy python-matplotlib python-pip python-pyaudio python3-pyaudio automake gf$
-    sudo apt-get install bison mplayer c++11 libjack0 libjack-dev
-    sudo apt-get install  zlib1g-dev
+    sudo apt-get install git sox htop python-dev python-numpy python-scipy python-matplotlib python-pip python-pyaudio python3-pyaudio automake gfortran subversion sshfs libtool flac swig kdevelop gnome-applets libatlas3-base gawk libatlas-base-dev libportaudio-ocaml jack nano openjdk-8-jdk portaudio19-dev bison mplayer c++11 libjack0 libjack-dev zlib1g-dev
 
 ## Getting Kaldi
 
@@ -65,6 +88,3 @@ You may need to do "make ext" to have onlinbin as well:
 
     make ext_depend -j 1
     make ext -j 1
-
-### To activate swap on ubuntu mate after making swap partition do:
-    sudo swapon /dev/mmcblk0p3
